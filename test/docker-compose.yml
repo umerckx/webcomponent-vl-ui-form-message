@@ -37,4 +37,4 @@ services:
       - ./wct.docker.conf.json:/workdir/wct.conf.json:ro
     environment:
       - SKIP_WCT_SAUCE_POSTINSTALL_DOWNLOAD=true
-    command: bash -c "cp -R /data/. /workdir && npm config ls -l && npm install && npm run test"
+    command: bash -c "cp -R /data/. /workdir && npm install && npm run test"
