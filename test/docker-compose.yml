@@ -21,6 +21,7 @@ services:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444
       - GRID_DEBUG=true
+      - DRIVER_LOGLEVEL=debug
   tests:
     image: ${DOCKER_REGISTRY}node:10
     depends_on:
