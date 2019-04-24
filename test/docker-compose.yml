@@ -35,4 +35,4 @@ services:
       - ${HOME:-.}/.git-credentials:/root/.git-credentials:ro
       - ..:/data:ro
       - ./wct.docker.conf.json:/workdir/wct.conf.json:ro
-    command: bash -c "cp -R /data/. /workdir && npm config ls -l && npm install && npm run test"
+    command: bash -c "cp -R /data/. /workdir && && whoami && npm config ls -l && npm install && npm run test"
