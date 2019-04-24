@@ -10,7 +10,9 @@
         "hostname": "tests"
     },
     "plugins": {
-        "local": false,
+        "local": {
+          "skipSeleniumInstall": true
+        },
         "sauce": false
     }
 }
