@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "npm run prepare:util",
     "prepare:util": "npm explore vl-ui-util -- npm run util",
-    "test": "wct --skip-plugin sauce -l chrome,firefox --npm ",
+    "test": "wct -l chrome,firefox --npm ",
     "release": "np",
     "release:prepare": "npm run release:prepare:build && npm run release:prepare:imports && npm run release:prepare:css && npm run release:prepare:commit",
     "release:prepare:build": "uglifyjs --compress --mangle --output vl-form-message.js -- *.src.js",
@@ -30,7 +30,8 @@
     "uglify-js-es6": "2.8.9",
     "vl-ui-util": "1.0.1",
     "wct-browser-legacy": "1.0.2",
-    "web-component-tester": "6.9.2"
+    "web-component-tester": "6.9.2",
+    "polymer-cli": "^1.9.8"
   },
   "publishConfig": {
     "registry": "http://artifactory-pr-build.lb.cumuli.be:8081/artifactory/api/npm/acd-npm/"
