@@ -3,6 +3,8 @@ services:
   selenium-hub:
     image: ${DOCKER_REGISTRY}selenium/hub:3.141.59
     container_name: selenium-hub
+    networks:
+      - build-network
     environment:
       - GRID_DEBUG=true
   selenium-chrome:
@@ -13,8 +15,12 @@ services:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
       - GRID_DEBUG=true
+    networks:
+      - build-network
   selenium-firefox:
     image: ${DOCKER_REGISTRY}selenium/node-firefox:3.141.59
+    networks:
+      - build-network
     depends_on:
       - selenium-hub
     environment:
@@ -24,6 +30,8 @@ services:
       - DRIVER_LOGLEVEL=debug
   tests:
     image: ${DOCKER_REGISTRY}node:10
+    networks:
+      - build-network
     depends_on:
       - selenium-hub
       - selenium-chrome
@@ -36,3 +44,7 @@ services:
       - ..:/data:ro
       - ./wct.docker.conf.json:/workdir/wct.conf.json:ro
     command: bash -c "cp -R /data/. /workdir && pwd && env && npm install && npm run test"
+
+networks:
+  build-network:
+    driver: bridge
